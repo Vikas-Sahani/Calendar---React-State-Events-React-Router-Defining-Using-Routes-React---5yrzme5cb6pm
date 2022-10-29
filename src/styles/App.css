@@ -2,11 +2,49 @@ h1 {
     color: #27aedb;
     text-align: center;
     }
-    
 
 button{
     color: #27aedb;
     text-align: center;
-    justify-content: center;
-    align-items: center;
+    width: 23vw;
+}
+
+#monthYear{
+    display: flex;
+    justify-content: space-between;
+    width: 40vh;
+}
+
+#YearText{
+    position: relative;
+    left: 20vw;
+}
+
+#YearText span{
+    display: inline-block;
+    position: absolute;
+    width: 50px;
+    left: -20%;
+}
+
+#YearText input{
+    position: absolute;
+    width: 50px;
+    left: -20%;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+#btn{
+    position: relative;
+    top:5vh
+}
+
+tr, th, td{
+    border: 2px solid black;
+    padding: 5px;
+    width: 12vw;
+    text-align: center;
 }
