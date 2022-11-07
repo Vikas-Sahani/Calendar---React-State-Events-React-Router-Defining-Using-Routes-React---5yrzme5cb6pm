@@ -47,109 +47,6 @@ const App = () => {
     return new Date(year, month + 1, 0).getDate();
   }
 
-  function createTrTd() {
-    const TrTd = [];
-    let i = 0;
-    while (i < daysInMonth(mnth, year)) {
-      TrTd.push(
-        <tr key={Math.random()}>
-          <td
-            style={{
-              backgroundColor: `${
-                i + 1 === date &&
-                mnth === currDate.getMonth() &&
-                year === currDate.getFullYear()
-                  ? "blue"
-                  : "transparent"
-              }`,
-            }}
-          >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
-          </td>
-          <td
-            style={{
-              backgroundColor: `${
-                i + 1 === date &&
-                mnth === currDate.getMonth() &&
-                year === currDate.getFullYear()
-                  ? "blue"
-                  : "transparent"
-              }`,
-            }}
-          >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
-          </td>
-          <td
-            style={{
-              backgroundColor: `${
-                i + 1 === date &&
-                mnth === currDate.getMonth() &&
-                year === currDate.getFullYear()
-                  ? "blue"
-                  : "transparent"
-              }`,
-            }}
-          >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
-          </td>
-          <td
-            style={{
-              backgroundColor: `${
-                i + 1 === date &&
-                mnth === currDate.getMonth() &&
-                year === currDate.getFullYear()
-                  ? "blue"
-                  : "transparent"
-              }`,
-            }}
-          >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
-          </td>
-          <td
-            style={{
-              backgroundColor: `${
-                i + 1 === date &&
-                mnth === currDate.getMonth() &&
-                year === currDate.getFullYear()
-                  ? "blue"
-                  : "transparent"
-              }`,
-            }}
-          >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
-          </td>
-          <td
-            style={{
-              backgroundColor: `${
-                i + 1 === date &&
-                mnth === currDate.getMonth() &&
-                year === currDate.getFullYear()
-                  ? "blue"
-                  : "transparent"
-              }`,
-            }}
-          >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
-          </td>
-          <td
-            style={{
-              backgroundColor: `${
-                i + 1 === date &&
-                mnth === currDate.getMonth() &&
-                year === currDate.getFullYear()
-                  ? "blue"
-                  : "transparent"
-              }`,
-            }}
-          >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
-          </td>
-        </tr>
-      );
-    }
-    return TrTd;
-  }
-
   function check() {
     if (find1stDay() > cnt) {
       cnt++;
@@ -172,6 +69,116 @@ const App = () => {
       }
     }
     return currDatesDay + 1;
+  }
+
+  function createTrTd() {
+    const TrTd = [];
+    let i = 0;
+    while (i < daysInMonth(mnth, year)) {
+      TrTd.push(
+        <tr key={Math.random()}>
+          <td
+            style={{
+              backgroundColor: `${
+                i + 1 === date &&
+                mnth === currDate.getMonth() &&
+                year === currDate.getFullYear()
+                  ? "blue"
+                  : "transparent"
+              }`,
+            }}
+            id={`${"cell" + i}`}
+          >
+            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+          </td>
+          <td
+            style={{
+              backgroundColor: `${
+                i + 1 === date &&
+                mnth === currDate.getMonth() &&
+                year === currDate.getFullYear()
+                  ? "blue"
+                  : "transparent"
+              }`,
+            }}
+            id={`${"cell" + i}`}
+          >
+            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+          </td>
+          <td
+            style={{
+              backgroundColor: `${
+                i + 1 === date &&
+                mnth === currDate.getMonth() &&
+                year === currDate.getFullYear()
+                  ? "blue"
+                  : "transparent"
+              }`,
+            }}
+            id={`${"cell" + i}`}
+          >
+            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+          </td>
+          <td
+            style={{
+              backgroundColor: `${
+                i + 1 === date &&
+                mnth === currDate.getMonth() &&
+                year === currDate.getFullYear()
+                  ? "blue"
+                  : "transparent"
+              }`,
+            }}
+            id={`${"cell" + i}`}
+          >
+            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+          </td>
+          <td
+            style={{
+              backgroundColor: `${
+                i + 1 === date &&
+                mnth === currDate.getMonth() &&
+                year === currDate.getFullYear()
+                  ? "blue"
+                  : "transparent"
+              }`,
+            }}
+            id={`${"cell" + i}`}
+          >
+            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+          </td>
+          <td
+            style={{
+              backgroundColor: `${
+                i + 1 === date &&
+                mnth === currDate.getMonth() &&
+                year === currDate.getFullYear()
+                  ? "blue"
+                  : "transparent"
+              }`,
+            }}
+            id={`${"cell" + i}`}
+          >
+            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+          </td>
+          <td
+            style={{
+              backgroundColor: `${
+                i + 1 === date &&
+                mnth === currDate.getMonth() &&
+                year === currDate.getFullYear()
+                  ? "blue"
+                  : "transparent"
+              }`,
+            }}
+            id={`${"cell" + i}`}
+          >
+            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+          </td>
+        </tr>
+      );
+    }
+    return TrTd;
   }
 
   return (
