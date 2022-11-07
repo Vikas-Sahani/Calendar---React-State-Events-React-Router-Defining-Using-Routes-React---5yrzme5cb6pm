@@ -3,36 +3,37 @@
 import React, { Component, useState } from "react";
 import "../styles/App.css";
 const currDate = new Date();
-
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 const App = () => {
   const [flag, setFlag] = useState(true);
   const [date, setDate] = useState(currDate.getDate());
   const [mnth, setMnth] = useState(currDate.getMonth());
   const [year, setYear] = useState(currDate.getFullYear());
-  const months = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-  const days = [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday",
-  ];
+  console.log(mnth);
   let cnt = 0;
+
+  function numMonth(month) {
+    let newNumMonth = null;
+    for (let i = 0; i < months.length; i++) {
+      if (months[i] === month) {
+        newNumMonth = i;
+      }
+    }
+    return newNumMonth;
+  }
 
   // slackOverFlow -> https://stackoverflow.com/questions/1184334/get-number-days-in-a-specified-month-using-javascript
   // Month in JavaScript is 0-indexed (January is 0, February is 1, etc),
@@ -40,14 +41,16 @@ const App = () => {
   // month. So passing in 1 as the month number will return the last day
   // of January, not February
   function daysInMonth(month, year) {
-    return new Date(year, month, 0).getDate();
+    if (!Number.isNaN(month)) {
+      month = numMonth(month);
+    }
+    return new Date(year, month + 1, 0).getDate();
   }
 
   function createTrTd() {
     const TrTd = [];
     let i = 0;
     while (i < daysInMonth(mnth, year)) {
-      console.log(daysInMonth(mnth, year));
       TrTd.push(
         <tr key={Math.random()}>
           <td
@@ -177,33 +180,26 @@ const App = () => {
       <div id="monthYear">
         <select
           id="month"
-          onChangeCapture={function (e) {
-            setMnth(Number(e.target.value));
-            console.log(mnth, Number(e.target.value), months[mnth]);
-          }}
-          value={mnth}
-        >
-          <option value={mnth} style={{ backgroundColor: "lightblue" }}>
-            {months[mnth]}
-          </option>
-          {/* {months.map((month, idx) => (
-            <option value={idx} key={idx}>
-              {month}
-            </option>
-          ))} */}
+          onChange={function (e) {
+            setMnth(e.target.value);
+            console.log(daysInMonth(mnth, year), mnth, year, date);
 
-          <option value={"0"}>{months[0]}</option>
-          <option value={"1"}>{months[1]}</option>
-          <option value={"2"}>{months[2]}</option>
-          <option value={"3"}>{months[3]}</option>
-          <option value={"4"}>{months[4]}</option>
-          <option value={"5"}>{months[5]}</option>
-          <option value={"6"}>{months[6]}</option>
-          <option value={"7"}>{months[7]}</option>
-          <option value={"8"}>{months[8]}</option>
-          <option value={"9"}>{months[9]}</option>
-          <option value={"10"}>{months[10]}</option>
-          <option value={"11"}>{months[11]}</option>
+            console.log(mnth, e.target.value);
+          }}
+        >
+          <option value={months[mnth]}>{months[mnth]} </option>
+          <option value={"January"}>January</option>
+          <option value={"February"}>February</option>
+          <option value={"March"}>March</option>
+          <option value={"April"}>April</option>
+          <option value={"May"}>May</option>
+          <option value={"June"}>June</option>
+          <option value={"July"}>July</option>
+          <option value={"August"}>August</option>
+          <option value={"September"}>September</option>
+          <option value={"October"}>October</option>
+          <option value={"November"}>November</option>
+          <option value={"December"}>December</option>
         </select>
         <div id="YearText">
           {flag ? (
@@ -228,6 +224,7 @@ const App = () => {
                 onChange={function (e) {
                   setYear(e.target.value);
                 }}
+                value={year}
               />
             </form>
           )}

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --mode development --watch --open --hot",
+    "start": "webpack-dev-server --mode development --watch --open --hot --port 3010",
     "build": "webpack --mode production"
   },
   "keywords": [],
