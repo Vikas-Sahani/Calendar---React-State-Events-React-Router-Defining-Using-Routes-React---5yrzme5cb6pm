@@ -19,9 +19,9 @@ const months = [
 ];
 const App = () => {
   const [flag, setFlag] = useState(true);
-  const [date, setDate] = useState(currDate.getDate());
   const [mnth, setMnth] = useState(currDate.getMonth());
   const [year, setYear] = useState(currDate.getFullYear());
+  const [inp, setInp] = useState(null);
   let cnt = 0;
 
   function numMonth(month) {
@@ -46,28 +46,11 @@ const App = () => {
     return new Date(year, month + 1, 0).getDate();
   }
 
-  // todo :- day is fixed in variable, how to make it dynamic(like in each day it should upedated automatically)
-  // function find1stDay() {
-  //   let userWritedDate = new Date(year + "-" + (mnth + 1) + "-" + date);
-  //   // console.log(year, mnth, date);
-  //   let currDatesDay = userWritedDate.getDay();
-  //   let mode = userWritedDate.getDate() % 7;
-  //   while (mode > 0) {
-  //     currDatesDay--;
-  //     mode--;
-  //     if (currDatesDay === -1) {
-  //       currDatesDay = 7;
-  //     }
-  //   }
-  //   return currDatesDay + 1;
-  // }
-
   // https://bobbyhadz.com/blog/javascript-get-first-day-of-month#:~:text=To%20get%20the%20first%20day,first%20day%20of%20the%20month.
   function getFirstDayOfMonth(year, mnth) {
     const dtForDay = new Date(year, mnth, 1);
     return dtForDay.getDay();
   }
-  console.log(getFirstDayOfMonth(year, mnth));
 
   function check() {
     if (cnt < getFirstDayOfMonth(year, mnth)) {
@@ -86,7 +69,7 @@ const App = () => {
           <td
             style={{
               backgroundColor: `${
-                i === date &&
+                i === currDate.getDate() &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -100,7 +83,7 @@ const App = () => {
           <td
             style={{
               backgroundColor: `${
-                i === date &&
+                i === currDate.getDate() &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -114,7 +97,7 @@ const App = () => {
           <td
             style={{
               backgroundColor: `${
-                i === date &&
+                i === currDate.getDate() &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -128,7 +111,7 @@ const App = () => {
           <td
             style={{
               backgroundColor: `${
-                i === date &&
+                i === currDate.getDate() &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -142,7 +125,7 @@ const App = () => {
           <td
             style={{
               backgroundColor: `${
-                i === date &&
+                i === currDate.getDate() &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -156,7 +139,7 @@ const App = () => {
           <td
             style={{
               backgroundColor: `${
-                i === date &&
+                i === currDate.getDate() &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -170,7 +153,7 @@ const App = () => {
           <td
             style={{
               backgroundColor: `${
-                i === date &&
+                i === currDate.getDate() &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -226,15 +209,16 @@ const App = () => {
               onSubmit={function (e) {
                 e.preventDefault();
                 setFlag(!flag);
+                setYear(inp);
               }}
             >
               <input
                 type="text"
                 id="year-text-box"
                 onChange={function (e) {
-                  setYear(e.target.value);
+                  setInp(e.target.value);
                 }}
-                value={year}
+                value={inp}
               />
             </form>
           )}
