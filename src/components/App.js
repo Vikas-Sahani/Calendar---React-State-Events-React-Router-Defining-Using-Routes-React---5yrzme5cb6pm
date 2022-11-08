@@ -22,7 +22,6 @@ const App = () => {
   const [date, setDate] = useState(currDate.getDate());
   const [mnth, setMnth] = useState(currDate.getMonth());
   const [year, setYear] = useState(currDate.getFullYear());
-  console.log(mnth);
   let cnt = 0;
 
   function numMonth(month) {
@@ -41,46 +40,53 @@ const App = () => {
   // month. So passing in 1 as the month number will return the last day
   // of January, not February
   function daysInMonth(month, year) {
-    if (!Number.isNaN(month)) {
+    if (isNaN(month)) {
       month = numMonth(month);
     }
     return new Date(year, month + 1, 0).getDate();
   }
 
+  // todo :- day is fixed in variable, how to make it dynamic(like in each day it should upedated automatically)
+  // function find1stDay() {
+  //   let userWritedDate = new Date(year + "-" + (mnth + 1) + "-" + date);
+  //   // console.log(year, mnth, date);
+  //   let currDatesDay = userWritedDate.getDay();
+  //   let mode = userWritedDate.getDate() % 7;
+  //   while (mode > 0) {
+  //     currDatesDay--;
+  //     mode--;
+  //     if (currDatesDay === -1) {
+  //       currDatesDay = 7;
+  //     }
+  //   }
+  //   return currDatesDay + 1;
+  // }
+
+  // https://bobbyhadz.com/blog/javascript-get-first-day-of-month#:~:text=To%20get%20the%20first%20day,first%20day%20of%20the%20month.
+  function getFirstDayOfMonth(year, mnth) {
+    const dtForDay = new Date(year, mnth, 1);
+    return dtForDay.getDay();
+  }
+  console.log(getFirstDayOfMonth(year, mnth));
+
   function check() {
-    if (find1stDay() > cnt) {
+    if (cnt < getFirstDayOfMonth(year, mnth)) {
       cnt++;
       return true;
-    } else if (find1stDay() === cnt) {
+    } else if (cnt === getFirstDayOfMonth(year, mnth)) {
       return false;
     }
   }
-
-  // todo :- day is fixed in variable, how to make it dynamic(like in each day it should upedated automatically)
-  function find1stDay() {
-    let userWritedDate = new Date(year + "-" + (mnth + 1) + "-" + date);
-    let currDatesDay = userWritedDate.getDay();
-    let mode = userWritedDate.getDate() % 7;
-    while (mode > 0) {
-      currDatesDay--;
-      mode--;
-      if (currDatesDay === -1) {
-        currDatesDay = 7;
-      }
-    }
-    return currDatesDay + 1;
-  }
-
   function createTrTd() {
     const TrTd = [];
-    let i = 0;
-    while (i < daysInMonth(mnth, year)) {
+    let i = 1;
+    while (i <= daysInMonth(mnth, year)) {
       TrTd.push(
         <tr key={Math.random()}>
           <td
             style={{
               backgroundColor: `${
-                i + 1 === date &&
+                i === date &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -89,12 +95,12 @@ const App = () => {
             }}
             id={`${"cell" + i}`}
           >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+            {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
           <td
             style={{
               backgroundColor: `${
-                i + 1 === date &&
+                i === date &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -103,12 +109,12 @@ const App = () => {
             }}
             id={`${"cell" + i}`}
           >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+            {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
           <td
             style={{
               backgroundColor: `${
-                i + 1 === date &&
+                i === date &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -117,12 +123,12 @@ const App = () => {
             }}
             id={`${"cell" + i}`}
           >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+            {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
           <td
             style={{
               backgroundColor: `${
-                i + 1 === date &&
+                i === date &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -131,12 +137,12 @@ const App = () => {
             }}
             id={`${"cell" + i}`}
           >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+            {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
           <td
             style={{
               backgroundColor: `${
-                i + 1 === date &&
+                i === date &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -145,12 +151,12 @@ const App = () => {
             }}
             id={`${"cell" + i}`}
           >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+            {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
           <td
             style={{
               backgroundColor: `${
-                i + 1 === date &&
+                i === date &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -159,12 +165,12 @@ const App = () => {
             }}
             id={`${"cell" + i}`}
           >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+            {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
           <td
             style={{
               backgroundColor: `${
-                i + 1 === date &&
+                i === date &&
                 mnth === currDate.getMonth() &&
                 year === currDate.getFullYear()
                   ? "blue"
@@ -173,7 +179,7 @@ const App = () => {
             }}
             id={`${"cell" + i}`}
           >
-            {check(cnt, i) ? "" : i < daysInMonth(mnth, year) ? ++i : ""}
+            {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
         </tr>
       );
@@ -189,9 +195,6 @@ const App = () => {
           id="month"
           onChange={function (e) {
             setMnth(e.target.value);
-            console.log(daysInMonth(mnth, year), mnth, year, date);
-
-            console.log(mnth, e.target.value);
           }}
         >
           <option value={months[mnth]}>{months[mnth]} </option>
