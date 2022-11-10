@@ -1,7 +1,6 @@
 // todo -> changing the curent date & coming to same date then currDate's color is not avalaible
 // todo -> after December nothing is rendered in Select>option
 import React, { Component, useState } from "react";
-// import "./styles.css";
 import "../styles/App.css";
 const currDate = new Date();
 const months = [
@@ -252,7 +251,12 @@ const App = () => {
         <button
           id="previous-month"
           onClick={function () {
-            setMnth(mnth - 1);
+            if (mnth <= 0) {
+              setYear(year - 1);
+              setMnth(11);
+            } else {
+              setMnth(mnth - 1);
+            }
           }}
         >
           &lt; (Previous-Month)
@@ -260,9 +264,15 @@ const App = () => {
         <button
           id="next-month"
           onClick={function () {
-            setMnth(mnth + 1);
+            if (mnth >= 11) {
+              setYear(year + 1);
+              setMnth(0);
+            } else {
+              setMnth(mnth + 1);
+            }
           }}
         >
+          {console.log(mnth)}
           &gt; (Next-Month)
         </button>
         <button
