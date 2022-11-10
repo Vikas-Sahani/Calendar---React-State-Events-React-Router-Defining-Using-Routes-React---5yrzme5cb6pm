@@ -1,6 +1,7 @@
-// todo -> how to render the calender dates correctly (done)
-
+// todo -> changing the curent date & coming to same date then currDate's color is not avalaible
+// todo -> after December nothing is rendered in Select>option
 import React, { Component, useState } from "react";
+// import "./styles.css";
 import "../styles/App.css";
 const currDate = new Date();
 const months = [
@@ -21,7 +22,7 @@ const App = () => {
   const [flag, setFlag] = useState(true);
   const [mnth, setMnth] = useState(currDate.getMonth());
   const [year, setYear] = useState(currDate.getFullYear());
-  const [inp, setInp] = useState(null);
+  const [inp, setInp] = useState("");
   let cnt = 0;
 
   function numMonth(month) {
@@ -177,7 +178,7 @@ const App = () => {
         <select
           id="month"
           onChange={function (e) {
-            setMnth(e.target.value);
+            setMnth(numMonth(e.target.value));
           }}
         >
           <option value={months[mnth]}>{months[mnth]} </option>
@@ -246,7 +247,7 @@ const App = () => {
             setYear(year - 1);
           }}
         >
-          &lt;&lt;
+          &lt;&lt; (Previous-Year)
         </button>
         <button
           id="previous-month"
@@ -254,7 +255,7 @@ const App = () => {
             setMnth(mnth - 1);
           }}
         >
-          &lt;
+          &lt; (Previous-Month)
         </button>
         <button
           id="next-month"
@@ -262,7 +263,7 @@ const App = () => {
             setMnth(mnth + 1);
           }}
         >
-          &gt;
+          &gt; (Next-Month)
         </button>
         <button
           id="next-year"
@@ -270,7 +271,7 @@ const App = () => {
             setYear(year + 1);
           }}
         >
-          &gt;&gt;
+          &gt;&gt; (Next-Year)
         </button>
       </div>
     </div>
