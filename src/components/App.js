@@ -2,6 +2,7 @@
 // todo -> after December nothing is rendered in Select>option
 import React, { Component, useState } from "react";
 import "../styles/App.css";
+// import "./styles.css";
 const currDate = new Date();
 const months = [
   "January",
@@ -63,6 +64,7 @@ const App = () => {
   function createTrTd() {
     const TrTd = [];
     let i = 1;
+    let cellNum = 0;
     while (i <= daysInMonth(mnth, year)) {
       TrTd.push(
         <tr key={Math.random()}>
@@ -76,7 +78,7 @@ const App = () => {
                   : "transparent"
               }`,
             }}
-            id={`${"cell" + i}`}
+            id={`${"cell" + cellNum++}`}
           >
             {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
@@ -90,7 +92,7 @@ const App = () => {
                   : "transparent"
               }`,
             }}
-            id={`${"cell" + i}`}
+            id={`${"cell" + cellNum++}`}
           >
             {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
@@ -104,7 +106,7 @@ const App = () => {
                   : "transparent"
               }`,
             }}
-            id={`${"cell" + i}`}
+            id={`${"cell" + cellNum++}`}
           >
             {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
@@ -118,7 +120,7 @@ const App = () => {
                   : "transparent"
               }`,
             }}
-            id={`${"cell" + i}`}
+            id={`${"cell" + cellNum++}`}
           >
             {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
@@ -132,7 +134,7 @@ const App = () => {
                   : "transparent"
               }`,
             }}
-            id={`${"cell" + i}`}
+            id={`${"cell" + cellNum++}`}
           >
             {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
@@ -146,7 +148,7 @@ const App = () => {
                   : "transparent"
               }`,
             }}
-            id={`${"cell" + i}`}
+            id={`${"cell" + cellNum++}`}
           >
             {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
@@ -160,7 +162,7 @@ const App = () => {
                   : "transparent"
               }`,
             }}
-            id={`${"cell" + i}`}
+            id={`${"cell" + cellNum++}`}
           >
             {check() ? "" : i <= daysInMonth(mnth, year) ? i++ : ""}
           </td>
